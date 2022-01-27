@@ -9,7 +9,7 @@ public class PageObject {
 
     public PageObject(WebDriver Browser) {
         if (Browser == null) {
-            System.setProperty("webdriver.chrome.driver", "Drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
             browser = new ChromeDriver();
             browser.navigate().to("http://practice.automationtesting.in/");
         }else{
