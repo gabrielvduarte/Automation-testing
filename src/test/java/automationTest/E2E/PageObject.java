@@ -17,7 +17,7 @@ public class PageObject {
         }
     }
 
-    public void facharTela(){
+    public void fecharTela(){
         browser.quit();
     }
 }
