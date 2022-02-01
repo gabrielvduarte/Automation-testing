@@ -20,6 +20,11 @@ public class TelaMyAccountPage extends PageObject {
         this.browser.findElement(By.xpath( "//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).submit();
     }
 
+    public void preencheFormularioCadastrado(String email, String password) {
+        this.browser.findElement(By.id("reg_email")).sendKeys(email);
+        this.browser.findElement(By.id("reg_password")).sendKeys(password);
+        this.browser.findElement(By.xpath( "//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).submit();
+    }
     public boolean verificaTexto(){
        return this.browser.getPageSource().contains("Login");
     }
