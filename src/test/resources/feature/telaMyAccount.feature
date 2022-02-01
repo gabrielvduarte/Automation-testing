@@ -1,10 +1,11 @@
 # language: pt
 
-Funcionalidade: Efetua Registro e login
+Funcionalidade: Usuario efetua Registro e Login
+
 
   Cenario: Usuario se loga com sucesso
     Dado que o cliente cadastrado acessa a tela de MyAccount
-    Quando preenche o formulario de registro
+    Quando preenche o formulario de login
     Entao aparecerá uma mensagem de cadastrado com sucesso
 
  Cenario: Usuario nao cadastrado tentar se loga
@@ -41,3 +42,28 @@ Funcionalidade: Efetua Registro e login
     Dado que o cliente cadastrado acessa a tela de MyAccount
     Quando usuario ja cadastrado tentar se registra com email correto e com a senha incorreta
     Entao devera retornar a seguinte mensagem "Uma conta já está registrada com seu endereço de e-mail. Por favor entre."
+
+ Cenario: Usuario preenche formulario de registro
+   Dado que o cliente ainda nao cadastrado acessa a tela de MyAccount
+   Quando preenche o formulario de registro
+   Entao aparecerá uma mensagem de cadastrado com sucesso
+
+ Cenario: Usuario ja registrado tenta se registrar novamente
+   Dado que o cliente ja cadastrado acessa a tela de MyAccount
+   Quando preenche o formulario de registro
+   Entao devera retornar a seguinte mensagem "Erro: Uma conta já está registrada com seu endereço de e-mail. Por favor entre."
+
+ Cenario: Usuario tenta se registrar com senha muito fraca
+   Dado que o cliente ainda nao cadastrado acessa a tela de MyAccount
+   Quando preenche o formulario de registro com senha fraca
+   Entao ele continua na pagina de MyAccount com a mensagem "Senha muito fraca"
+
+ Cenario: Usuario tenta se registrar com email em branco
+   Dado que o cliente ainda nao cadastrado acessa a tela de MyAccount
+   Quando preenche o formulario de registro com email em branco e senha corretamente
+   Entao devera retornar a seguinte mensagem "Erro: Forneça um endereço de e-mail válido."
+
+ Cenario: Usuario tenta se registrar com email e senha em branco
+   Dado que o cliente ainda nao cadastrado acessa a tela de MyAccount
+   Quando preenche formulario de registro com email em branco e senha
+   Entao devera retornar a seguinte mensagem "Erro: Forneça um endereço de e-mail válido."
