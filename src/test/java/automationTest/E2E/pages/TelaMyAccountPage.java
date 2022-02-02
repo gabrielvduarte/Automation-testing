@@ -3,13 +3,10 @@ package automationTest.E2E.pages;
 import automationTest.E2E.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
-import org.openqa.selenium.WebDriver;
 
 public class TelaMyAccountPage extends PageObject {
 
     private static final String URL_FORMULARIO_CADASTRO = "http://practice.automationtesting.in/my-account/";
-    public String getEmailemBranco;
-
 
     public TelaMyAccountPage() {
         super(null);
@@ -22,7 +19,7 @@ public class TelaMyAccountPage extends PageObject {
         this.browser.findElement(By.xpath("//*[@id=\"customer_login\"]/div[1]/form/p[3]/input[3]")).submit();
     }
 
-    public void preencheFormularioCadastrado(String email, String password) {
+    public void preencheFormularioCadastro(String email, String password) {
         this.browser.findElement(By.id("reg_email")).sendKeys(email);
         this.browser.findElement(By.id("reg_password")).sendKeys(password);
         this.browser.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[3]/input[3]")).submit();
@@ -39,13 +36,38 @@ public class TelaMyAccountPage extends PageObject {
             return null;
         }
     }
-
+    //Formulario login
     public String getUsuarioNaoCadastrado() {
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/")).getText();
+    }
+    public String getSenhaEmBranco() {
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+    }
+    public String getEmailemBranco () {
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/strong/font/font")).getText();
+    }
+
+    public String getEmailcomNumeros() {
         return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
     }
 
-    public String getSenhaEmBranco() {
+    public String getNomeNoCampoEmail() {
         return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+    }
+
+    public String getSenhaIncorreta() {
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/text()[1]")).getText();
+    }
+    //Formulario Registro
+
+    public String getSenhaFraca() {
+        return browser.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[2]/div")).getText();
+    }
+
+    public String getEmailemBrancoEsenha() {
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+
+
     }
 }
 

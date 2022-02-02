@@ -4,9 +4,7 @@ import automationTest.E2E.pages.TelaMyAccountPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.BeforeEach;
 
 public class TelaMyAccountTest {
     private TelaMyAccountPage testFormulario;
@@ -62,35 +60,45 @@ public class TelaMyAccountTest {
         Assertions.assertTrue(this.testFormulario.verificaTexto());
         Assertions.assertFalse(Boolean.parseBoolean("ERROR: The password you entered for the username gato.lino@bol.com.br is incorrect. Lost your password?"), this.testFormulario.getNomeUsuarioLogado());
     }
-    @Test
-    public void usuarioCadastradoTentarSelogarMaisDeUmaVez() {
-        this.testFormulario.preencheFormularioLogin("gato.lino@bol.com.br", "Amora58742247josa");
-        Assertions.assertTrue(this.testFormulario.verificaTexto());
-        this.testFormulario.preencheFormularioLogin("gato.lino@bol.com.br", "Amora58742247josa");
-        Assertions.assertFalse(Boolean.parseBoolean("ERROR: The password you entered for the username gato.lino@bol.com.br is incorrect. Lost your password?"), this.testFormulario.getNomeUsuarioLogado());
-    }
+
     @Test //Formulario de Registro
     public void usuarioPreencheFormulariodeCadastro() {
-        this.testFormulario.preencheFormularioCadastrado("fulano@gmail.com.br", "Chorando_manga");
+        this.testFormulario.preencheFormularioCadastro("fulano@gmail.com.br", "Chorando_manga");
         Assertions.assertTrue(this.testFormulario.verificaTexto());
         Assertions.assertEquals(null, this.testFormulario.getNomeUsuarioLogado());
     }
     @Test
-    public void usarioJaRegistradoTentarSeRegistrar() {
-        this.testFormulario.preencheFormularioCadastrado("gato.lino@bol.com.br", "Amora58742247josa");
+    public void usarioJaRegistradoTentaSeRegistrar() {
+        this.testFormulario.preencheFormularioCadastro("gato.lino@bol.com.br", "Amora58742247josa");
         Assertions.assertTrue(this.testFormulario.verificaTexto());
         Assertions.assertEquals(Boolean.parseBoolean("Erro: Uma conta já está registrada com seu endereço de e-mail. Por favor entre."), this.testFormulario.getNomeUsuarioLogado());
     }
     @Test
     public void usarioTentaSeCadastrarComSenhaFraca() {
-        this.testFormulario.preencheFormularioCadastrado("beltrano@gmail.com.br", "pass5874");
+        this.testFormulario.preencheFormularioCadastro("beltrano@gmail.com.br", "pass5874");
         Assertions.assertTrue(this.testFormulario.verificaTexto());
         Assertions.assertEquals(null, this.testFormulario.getNomeUsuarioLogado());
     }
     @Test
-    public void usuarioTentarSeLogaComEmaiEmlBranco() {
-        this.testFormulario.preencheFormularioCadastrado("", "Messias58742247");
+    public void usuarioTentaSeLogaComEmaiEmlBranco() {
+        this.testFormulario.preencheFormularioCadastro("", "Messias58742247");
         Assertions.assertTrue(this.testFormulario.verificaTexto());
-        Assertions.assertFalse(Boolean.parseBoolean("Erro: Forneça um endereço de e-mail válido."), this.testFormulario.getNomeUsuarioLogado());
+        Assertions.assertFalse(Boolean.parseBoolean("Error: Please provide a valid email address."), this.testFormulario.getNomeUsuarioLogado());
     }
+    @Test
+    public void UsuarioSeRegistrarEefetuarLogin() {
+        this.testFormulario.preencheFormularioCadastro("beltrano@gmail.con", "Beltrano587422159");
+        Assertions.assertTrue(this.testFormulario.verificaTexto());
+        this.testFormulario.preencheFormularioLogin("beltrano@gmail.con", "Beltrano587422159");
+        Assertions.assertTrue(this.testFormulario.verificaTexto());
+        Assertions.assertEquals(null, this.testFormulario.getNomeUsuarioLogado());
+    }
+    @Test
+    public void UsuarioTentaSeRegistrarComEmailEsenhaEmBranco() {
+        this.testFormulario.preencheFormularioCadastro("","");
+        Assertions.assertTrue(this.testFormulario.verificaTexto());
+        Assertions.assertFalse(Boolean.parseBoolean("Error: Please provide a valid email address."), this.testFormulario.getNomeUsuarioLogado());
+    }
+
+
 }
