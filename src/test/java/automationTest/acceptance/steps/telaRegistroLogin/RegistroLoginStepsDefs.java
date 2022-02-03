@@ -1,4 +1,4 @@
-package automationTest.acceptance.steps;
+package automationTest.acceptance.steps.telaRegistroLogin;
 
 import automationTest.E2E.pages.TelaMyAccountPage;
 import io.cucumber.java.After;
@@ -14,7 +14,6 @@ import static org.junit.jupiter.api.Assertions.*;
 public class RegistroLoginStepsDefs {
 
     TelaMyAccountPage myAccountPage;
-
 
     @After
     public void afterEach() {
@@ -43,7 +42,7 @@ public class RegistroLoginStepsDefs {
     }
     @Entao("o usuario continua na mesma tela e retornar a seguinte mensagem {string}")
     public void o_usuario_continua_na_mesma_tela_e_retornar_a_seguinte_mensagem(String mensagem) {
-        assertFalse(equals(myAccountPage.getUsuarioNaoCadastrado()), mensagem);
+        assertFalse(myAccountPage.getUsuarioNaoCadastrado().equals(mensagem));
     }
 
     @Dado("que o usuario acesse a tela do MyAccount")

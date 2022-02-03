@@ -8,6 +8,7 @@ Funcionalidade: Usuario efetua Registro e Login
     Quando preenche o formulario de login
     Entao aparecerá uma mensagem "Hello gato.lino (not gato.lino? Sign out)"
 
+    @Valida
  Cenario: Usuario nao cadastrado tentar se loga
    Dado que o usuario nao cadastrado tentar se loga na tela de MyAccount
    Quando informar nome de usuario não cadastrado e senha

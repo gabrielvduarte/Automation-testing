@@ -38,6 +38,7 @@ public class TelaMyAccountPage extends PageObject {
     }
     //Formulario login
     public String getUsuarioNaoCadastrado() {
+        System.out.println(browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText());
         return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
     public String getSenhaEmBranco() {

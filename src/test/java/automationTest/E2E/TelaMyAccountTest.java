@@ -15,7 +15,7 @@ public class TelaMyAccountTest {
     }
     @After
     public void afterEach() {
-        this.testFormulario.facharTela();
+        this.testFormulario.fecharTela();
     }
 
     @Test
