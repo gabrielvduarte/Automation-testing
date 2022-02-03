@@ -1,5 +1,6 @@
 # language: pt
 
+  @RunAll
   Funcionalidade: Validar a adição e remoçã0 da tela de carrinho
 
   Contexto:

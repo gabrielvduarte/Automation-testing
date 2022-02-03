@@ -6,7 +6,8 @@ import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
 @CucumberOptions(
-        features = "src/test/resources/features/ValidaTelaCarrinho.feature"
+        features = "src/test/resources/features/ValidaTelaCarrinho.feature",
+        glue = {"automationTest.acceptance.steps.telaCarrinho"}
 )
 public class AutomationTestRunner {
 }
