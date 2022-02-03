@@ -38,36 +38,39 @@ public class TelaMyAccountPage extends PageObject {
     }
     //Formulario login
     public String getUsuarioNaoCadastrado() {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
     public String getSenhaEmBranco() {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
     public String getEmailemBranco () {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/strong/font/font")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
 
     public String getEmailcomNumeros() {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
 
     public String getNomeNoCampoEmail() {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
 
     public String getSenhaIncorreta() {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/text()[1]")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
     }
     //Formulario Registro
 
-    public String getSenhaFraca() {
-        return browser.findElement(By.xpath("//*[@id=\"customer_login\"]/div[2]/form/p[2]/div")).getText();
+    public Boolean getSenhaFraca(String mensagem) {
+        /*return browser.findElement(By.cssSelector("#customer_login > div.u-column2.col-2 > form > p:nth-child(2) > div")).getText();*/
+        return browser.getPageSource().contains(mensagem);
     }
 
     public String getEmailemBrancoEsenha() {
-        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]/ul/li/font/font")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div/div[1]")).getText();
+    }
 
-
+    public String getNomeUsuarioLogadoComSucesso() {
+        return browser.findElement(By.xpath("//*[@id=\"page-36\"]/div")).getText();
     }
 }
 

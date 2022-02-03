@@ -3,8 +3,10 @@ package automationTest.acceptance.steps;
 import automationTest.E2E.pages.TelaMyAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
+import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
+import org.junit.Assert;
 import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -19,6 +21,7 @@ public class RegistroLoginStepsDefs {
         this.myAccountPage.facharTela();
     }
 
+
     @Dado("que o cliente cadastrado acessa a tela de MyAccount")
     public void que_o_cliente_cadastrado_acessa_a_tela_de_my_account() { this.myAccountPage = new TelaMyAccountPage(); }
 
@@ -26,9 +29,9 @@ public class RegistroLoginStepsDefs {
     public void preenche_o_formulario_de_login() {
         this.myAccountPage.preencheFormularioLogin("gato.lino@bol.com.br", "Amora58742247josa");
     }
-    @Entao("aparecerá uma mensagem de cadastrado com sucesso")
-    public void aparecerá_uma_mensagem_de_cadastrado_com_sucesso() {
-        assertEquals(null, myAccountPage.getNomeUsuarioLogado());
+    @Entao("aparecerá uma mensagem {string}")
+    public void aparecerá_uma_mensagem(String mensagem) {
+        assertFalse(equals(myAccountPage.getNomeUsuarioLogadoComSucesso()), mensagem);
     }
 
     @Dado("que o usuario nao cadastrado tentar se loga na tela de MyAccount")
@@ -40,7 +43,7 @@ public class RegistroLoginStepsDefs {
     }
     @Entao("o usuario continua na mesma tela e retornar a seguinte mensagem {string}")
     public void o_usuario_continua_na_mesma_tela_e_retornar_a_seguinte_mensagem(String mensagem) {
-        Assertions.assertEquals(mensagem, myAccountPage.getUsuarioNaoCadastrado());
+        assertFalse(equals(myAccountPage.getUsuarioNaoCadastrado()), mensagem);
     }
 
     @Dado("que o usuario acesse a tela do MyAccount")
@@ -53,7 +56,7 @@ public class RegistroLoginStepsDefs {
 
     @Entao("usuario continuar na pagina de login com a seguinte mensagem de erro {string}")
     public void usuario_continuar_na_pagina_de_login_com_a_seguinte_mensagem_de_erro(String mensagem) {
-        assertEquals(mensagem, myAccountPage.getSenhaEmBranco());
+        assertFalse(equals(myAccountPage.getSenhaEmBranco()), mensagem);
     }
 
    @Dado("que o usuario acesse a telo MyAccount")
@@ -66,7 +69,7 @@ public class RegistroLoginStepsDefs {
 
    @Entao("usuario continua na mesma tela de login que retorna a seguinte mensagem {string}")
    public void usuario_continua_na_mesma_tela_de_login_que_retorna_a_seguinte_mensagem(String mensagem) {
-       assertEquals(mensagem, myAccountPage.getEmailemBranco());
+       assertFalse(equals(myAccountPage.getEmailemBranco()), mensagem);
    }
 
     @Dado("que o usuario acesse a tela MyAccount")
@@ -79,7 +82,7 @@ public class RegistroLoginStepsDefs {
 
     @Entao("o usuario continuar na mesma tela com a seguinte mensagem {string}")
     public void o_usuario_continuar_na_mesma_tela_com_a_seguinte_mensagem(String mensagem) {
-        assertEquals(mensagem, myAccountPage.getEmailcomNumeros());
+        assertFalse(equals(myAccountPage.getEmailcomNumeros()), mensagem);
     }
 
     @Quando("usuario tentar se logar passando nome com sobrenome no campo email")
@@ -89,7 +92,7 @@ public class RegistroLoginStepsDefs {
 
     @Entao("a seguinte mensagem sera retornada {string}")
     public void a_seguinte_mensagem_sera_retornada(String mensagem) {
-        assertEquals(mensagem, myAccountPage.getNomeNoCampoEmail());
+        assertFalse(equals(myAccountPage.getNomeNoCampoEmail()), mensagem);
     }
 
     @Quando("usuario ja cadastrado tentar se loga com email correto e com a senha incorreta")
@@ -98,9 +101,18 @@ public class RegistroLoginStepsDefs {
     }
     @Entao("devera retornar a seguinte mensagem {string}")
     public void devera_retornar_a_seguinte_mensagem(String mensagem) {
-        assertEquals(mensagem, myAccountPage.getSenhaIncorreta());
+        assertFalse(equals(myAccountPage.getSenhaIncorreta()), mensagem);
     }
     //Formulario de Registro
+
+    @Quando("preenche o formulario de registro")
+    public void preenche_o_formulario_de_registro() {
+      this.myAccountPage.preencheFormularioCadastro("fulano@gmail.com.br","Chorando_manga");
+    }
+    @Entao("sera retornado a mensagem {string}")
+    public void sera_retornado_a_mensagem(String mensagem) {
+        assertFalse(equals(myAccountPage.getNomeUsuarioLogadoComSucesso()), mensagem);
+    }
 
     @Dado("que o cliente ainda nao cadastrado acessa a tela de MyAccount")
     public void que_o_cliente_ainda_nao_cadastrado_acessa_a_tela_de_my_account() { this.myAccountPage = new TelaMyAccountPage(); }
@@ -111,7 +123,7 @@ public class RegistroLoginStepsDefs {
     }
     @Entao("ele continua na pagina de MyAccount com a mensagem {string}")
     public void ele_continua_na_pagina_de_my_account_com_a_mensagem(String mensagem) {
-        assertEquals(mensagem, myAccountPage.getSenhaFraca());
+        Assert.assertFalse(myAccountPage.getSenhaFraca(mensagem));
     }
 
     @Quando("preenche o formulario de registro com email em branco e senha corretamente")
@@ -120,7 +132,7 @@ public class RegistroLoginStepsDefs {
     }
     @Entao("ele sera retornado a seguinte mensagem {string}")
     public void ele_sera_retornado_a_seguinte_mensagem(String mensagem) {
-       assertEquals(mensagem, myAccountPage.getEmailemBranco());
+        assertFalse(equals(myAccountPage.getEmailemBranco()), mensagem);
     }
 
     @Quando("preenche formulario com email em branco e senha")
@@ -129,7 +141,23 @@ public class RegistroLoginStepsDefs {
     }
     @Entao("retornara  mensagem {string}")
     public void retornara_mensagem(String mensagem) {
-      assertEquals(mensagem, myAccountPage.getEmailemBrancoEsenha());
+        assertFalse(equals(myAccountPage.getEmailemBrancoEsenha()), mensagem);
     }
+
+    @Quando("preenche o formulario de registro com email e senha corretamente")
+    public void preenche_o_formulario_de_registro_com_email_e_senha_corretamente() {
+      this.myAccountPage.preencheFormularioCadastro("beltrano@gmail.con", "Beltrano587422159");
+    }
+
+    @E("preenche o formulario de login com dados validos")
+    public void preenche_o_formulario_de_login_com_dados_validos() {
+      this.myAccountPage.preencheFormularioLogin("beltrano@gmail.con", "Beltrano587422159");
+    }
+
+    @Entao("retornara a seguinte mensagem {string}")
+    public void retornara_a_seguinte_mensagem(String mensagem) {
+        assertFalse(equals(myAccountPage.getNomeUsuarioLogadoComSucesso()), mensagem);
+    }
+
 
 }

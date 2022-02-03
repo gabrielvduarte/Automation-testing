@@ -6,7 +6,7 @@ Funcionalidade: Usuario efetua Registro e Login
   Cenario: Usuario se loga com sucesso
     Dado que o cliente cadastrado acessa a tela de MyAccount
     Quando preenche o formulario de login
-    Entao aparecerá uma mensagem de cadastrado com sucesso
+    Entao aparecerá uma mensagem "Hello gato.lino (not gato.lino? Sign out)"
 
  Cenario: Usuario nao cadastrado tentar se loga
    Dado que o usuario nao cadastrado tentar se loga na tela de MyAccount
@@ -41,7 +41,7 @@ Funcionalidade: Usuario efetua Registro e Login
  Cenario: Usuario preenche formulario de registro
    Dado que o cliente ainda nao cadastrado acessa a tela de MyAccount
    Quando preenche o formulario de registro
-   Entao aparecerá uma mensagem de cadastrado com sucesso
+   Entao sera retornado a mensagem "Hello gato.lino (not gato.lino? Sign out)"
 
  Cenario: Usuario tenta se registrar com senha muito fraca
    Dado que o cliente ainda nao cadastrado acessa a tela de MyAccount
