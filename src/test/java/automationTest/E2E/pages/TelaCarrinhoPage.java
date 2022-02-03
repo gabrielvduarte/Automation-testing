@@ -5,18 +5,10 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
 import java.util.Objects;
-import java.util.concurrent.TimeUnit;
-
 public class TelaCarrinhoPage extends PageObject {
-
-    String URL_TELA_CARRINHO = "http://practice.automationtesting.in/basket/";
 
     public TelaCarrinhoPage(WebDriver browser) {
         super(browser);
-    }
-
-    public void clicaBtnItemCarrinho(){
-        browser.findElement(By.className("wpmenucart-contents")).click();
     }
 
     public void clicaBtnRemoveItemCarrinho(String linha){
@@ -29,7 +21,20 @@ public class TelaCarrinhoPage extends PageObject {
 
     public String mensagemCarrinhoVazio() throws InterruptedException {
         Thread.sleep(1500);
-        return browser.findElement(By.className("return-to-shop")).getText();
+        return browser.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[2]/p[1]")).getText();
+    }
+
+    public void adicionaProdutosManualmente(String produtos){
+        browser.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/form/table/tbody/tr[1]/td[5]/div/input")).sendKeys(produtos);
+    }
+
+    public void adicionaCupom(String cupom) throws InterruptedException {
+        Thread.sleep(1500);
+        browser.findElement(By.xpath("//*[@id=\"coupon_code\"]")).sendKeys(cupom);
+    }
+
+    public void aplicaCupom(){
+        clicaNoBotao("//*[@id=\"page-34\"]/div/div[1]/form/table/tbody/tr[2]/td/div/input[2]");
     }
 
     public String pegaQTDItemCarrinho(){
@@ -40,7 +45,16 @@ public class TelaCarrinhoPage extends PageObject {
         return browser.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/form/table/tbody/tr[1]/td[6]/span")).getText();
     }
 
-    public void acessarTelaCarrinho(){
-        browser.navigate().to(URL_TELA_CARRINHO);
+    public void atualizaCesta() throws InterruptedException {
+        Thread.sleep(1500);
+        clicaNoBotao("//*[@id=\"page-34\"]/div/div[1]/form/table/tbody/tr[2]/td/input[1]");
+    }
+
+    public void limpaInput(){
+        browser.findElement(By.xpath("//*[@id=\"page-34\"]/div/div[1]/form/table/tbody/tr[1]/td[5]/div/input")).clear();
+    }
+
+    public boolean verificaSeTemOElemento(String elemento){
+       return browser.getPageSource().contains(elemento);
     }
 }

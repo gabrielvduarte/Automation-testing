@@ -1,6 +1,7 @@
 package automationTest.acceptance.steps;
 
 import automationTest.E2E.pages.HomePage;
+import automationTest.E2E.pages.ShopPage;
 import automationTest.E2E.pages.TelaCarrinhoPage;
 import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
@@ -13,10 +14,15 @@ public class TestTelaCarrinhoStepsDefs {
 
     private TelaCarrinhoPage telaCarrinho;
     private HomePage homepage;
+    private ShopPage shopPage;
 
     @After
     public void after(){
-        telaCarrinho.fecharTela();
+        if(homepage == null && !homepage.isPaginaAtual()) {
+            telaCarrinho.fecharTela();
+        }else {
+            homepage.fecharTela();
+        }
     }
 
     @Dado("que usuario acesse a pagina inicial")
@@ -39,9 +45,9 @@ public class TestTelaCarrinhoStepsDefs {
         Assert.assertFalse("0.00".equals(telaCarrinho.pegaValorTotalCarrinho()));
     }
 
-    @Entao("aparecera a mensagem do produto excluido do carrinho")
-    public void apareceraAMensagemDoProdutoExcluidoDoCarrinho() throws InterruptedException {
-        Assert.assertFalse("Return To Shop",equals(telaCarrinho.mensagemCarrinhoVazio()));
+    @Entao("aparecera a mensagem da cesta vazia")
+    public void apareceraAMensagemDaCestaVazia() throws InterruptedException {
+        Assert.assertFalse("Your basket is currently empty.",equals(telaCarrinho.mensagemCarrinhoVazio()));
     }
 
     @Quando("remover o produto adicionado no carrinho")
@@ -68,11 +74,6 @@ public class TestTelaCarrinhoStepsDefs {
     }
 
 
-    @E("ao Acessar a tela de carrinho novamente")
-    public void aoAcessarATelaDeCarrinhoNovamente() {
-        telaCarrinho = homepage.acessaCarrinhoAposSelecionarProdutoPeloSpan();
-    }
-
     @Quando("recarrega a pagina")
     public void recarregaAPagina() {
         homepage.recarregaApagina();
@@ -81,6 +82,52 @@ public class TestTelaCarrinhoStepsDefs {
     @Entao("aumenta o valor final do span carrinho")
     public void aumentaOValorFinalDoSpanCarrinho() {
         Assert.assertFalse("0.00".equals(homepage.pegaValorPeloSpan()));
-        homepage.fecharTela();
+    }
+
+        @Entao("o usuario e redirecionado a tela shop")
+        public void oUsuarioERedirecionadoATelaShop() {
+            Assert.assertTrue(shopPage.isPaginaAtual());
+        }
+
+    @E("ao Acessar a tela de carrinho pelo span")
+    public void aoAcessarATelaDeCarrinhoPeloSpan() {
+        telaCarrinho = homepage.acessaCarrinhoAposSelecionarProdutoPeloSpan();
+    }
+
+    @Quando("ao Acessar a tela de carrinho pelo span zerado")
+    public void aoAcessarATelaDeCarrinhoPeloSpanZerado() {
+        shopPage = homepage.acessaCarrinhoAposSelecionarProdutoPeloSpanZerado();
+    }
+
+    @E("e adiciona manualmente zero produtos")
+    public void eAdicionaManualmenteZeroProdutos() {
+        telaCarrinho.limpaInput();
+        telaCarrinho.adicionaProdutosManualmente("0");
+    }
+
+    @E("atualiza sua cesta")
+    public void atualizaSuaCesta() throws InterruptedException {
+        telaCarrinho.atualizaCesta();
+    }
+
+    @E("adiciona cupom")
+    public void adicionaCupom()throws InterruptedException {
+        telaCarrinho.adicionaCupom("krishnasakinala");
+    }
+
+    @E("aplica o cupom")
+    public void aplicaOCupom() {
+        telaCarrinho.aplicaCupom();
+    }
+
+    @Entao("o cupom e exibido na tela")
+    public void oCupomEExibidoNaTela() {
+       Assert.assertFalse(telaCarrinho.verificaSeTemOElemento("Coupon: krishnasakinala"));
+    }
+
+    @E("e adiciona manualmente a quantidade de produtos")
+    public void eAdicionaManualmenteAQuantidadeDeProdutos() {
+        telaCarrinho.limpaInput();
+        telaCarrinho.adicionaProdutosManualmente("2");
     }
 }

@@ -1,15 +1,13 @@
 package automationTest.acceptance;
 
-import automationTest.E2E.pages.TelaCarrinhoPage;
-import org.junit.After;
-import org.junit.Assert;
-import org.junit.Before;
-import org.junit.Test;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
+import io.cucumber.junit.Cucumber;
+import io.cucumber.junit.CucumberOptions;
+import org.junit.runner.RunWith;
 
-import java.util.concurrent.TimeUnit;
-
-
+@RunWith(Cucumber.class)
+@CucumberOptions(
+        features = "src/test/resources/features/ValidaTelaCarrinho.feature",
+        tags = "@UtilizaCupom"
+)
 public class AutomationTestRunner {
 }
