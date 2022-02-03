@@ -61,7 +61,6 @@ public class TelaMyAccountPage extends PageObject {
     //Formulario Registro
 
     public Boolean getSenhaFraca(String mensagem) {
-        /*return browser.findElement(By.cssSelector("#customer_login > div.u-column2.col-2 > form > p:nth-child(2) > div")).getText();*/
         return browser.getPageSource().contains(mensagem);
     }
 

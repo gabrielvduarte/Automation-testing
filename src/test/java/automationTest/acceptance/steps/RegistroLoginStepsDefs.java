@@ -18,7 +18,7 @@ public class RegistroLoginStepsDefs {
 
     @After
     public void afterEach() {
-        this.myAccountPage.facharTela();
+        this.myAccountPage.fecharTela();
     }
 
 
