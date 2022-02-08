@@ -1,7 +1,7 @@
 package automationTest.E2E.pages;
 
-import automationTest.E2E.PageObject;
-import org.openqa.selenium.By;
+import automationTest.acceptance.telaMyAccount.pageObject.PageObject;
+import automationTest.acceptance.telaCarrinho.pagesObjects.TelaCarrinhoPage;
 import org.openqa.selenium.WebDriver;
 
 public class ShopPage extends PageObject {

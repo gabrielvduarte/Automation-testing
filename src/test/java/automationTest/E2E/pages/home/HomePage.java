@@ -1,6 +1,8 @@
-package automationTest.E2E.pages;
+package automationTest.E2E.pages.home;
 
-import automationTest.E2E.PageObject;
+import automationTest.acceptance.telaMyAccount.pageObject.PageObject;
+import automationTest.E2E.pages.ShopPage;
+import automationTest.acceptance.telaCarrinho.pagesObjects.TelaCarrinhoPage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

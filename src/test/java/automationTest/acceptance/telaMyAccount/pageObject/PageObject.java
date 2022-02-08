@@ -1,6 +1,6 @@
-package automationTest.E2E;
+package automationTest.acceptance.telaMyAccount.pageObject;
 
-import automationTest.E2E.pages.HomePage;
+import automationTest.E2E.pages.home.HomePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -13,7 +13,7 @@ public class PageObject {
 
     public PageObject(WebDriver Browser) {
         if (Browser == null) {
-            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver.exe");
+            System.setProperty("webdriver.chrome.driver", "drivers/chromedriver");
             browser = new ChromeDriver();
             browser.navigate().to("http://practice.automationtesting.in/");
         }else{

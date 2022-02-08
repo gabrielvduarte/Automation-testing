@@ -1,13 +1,12 @@
-package automationTest.acceptance.steps.telaRegistroLogin;
+package automationTest.acceptance.telaMyAccount.steps;
 
-import automationTest.E2E.pages.TelaMyAccountPage;
+import automationTest.acceptance.telaMyAccount.pagesObjects.TelaMyAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
 import io.cucumber.java.pt.Entao;
 import io.cucumber.java.pt.Quando;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 
 import static org.junit.jupiter.api.Assertions.*;
 

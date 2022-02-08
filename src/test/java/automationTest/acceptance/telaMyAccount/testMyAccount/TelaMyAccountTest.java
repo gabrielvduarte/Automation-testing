@@ -1,6 +1,6 @@
-package automationTest.E2E;
+package automationTest.acceptance.telaMyAccount.testMyAccount;
 
-import automationTest.E2E.pages.TelaMyAccountPage;
+import automationTest.acceptance.telaMyAccount.pagesObjects.TelaMyAccountPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

@@ -1,6 +1,6 @@
-package automationTest.E2E.pages;
+package automationTest.acceptance.telaMyAccount.pagesObjects;
 
-import automationTest.E2E.PageObject;
+import automationTest.acceptance.telaMyAccount.pageObject.PageObject;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
 

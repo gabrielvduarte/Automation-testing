@@ -1,6 +1,6 @@
 //package automationTest.E2E;
 //
-//import automationTest.E2E.pages.TelaCarrinhoPage;
+//import automationTest.acceptance.telaCarrinho.pagesObjects.TelaCarrinhoPage;
 //import org.junit.After;
 //import org.junit.Assert;
 //import org.junit.Before;
