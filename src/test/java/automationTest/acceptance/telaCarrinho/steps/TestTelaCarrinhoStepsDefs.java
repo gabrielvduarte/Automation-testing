@@ -1,8 +1,8 @@
 package automationTest.acceptance.telaCarrinho.steps;
 
-import automationTest.E2E.pages.home.HomePage;
-import automationTest.E2E.pages.ShopPage;
-import automationTest.acceptance.telaCarrinho.pagesObjects.TelaCarrinhoPage;
+import automationTest.acceptance.telaHome.HomePage;
+import automationTest.acceptance.telaShop.ShopPage;
+import automationTest.acceptance.telaCarrinho.pages.TelaCarrinhoPage;
 import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -18,7 +18,7 @@ public class TestTelaCarrinhoStepsDefs {
 
     @After
     public void after(){
-        if(homepage == null && !  homepage.isPaginaAtual()) {
+        if(homepage == null && !homepage.isPaginaAtual()) {
             telaCarrinho.fecharTela();
         }else {
             homepage.fecharTela();

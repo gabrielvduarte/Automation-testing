@@ -1,7 +1,7 @@
 # language: pt
 
   @RunAll
-  Funcionalidade: Validar a adição e remoçã0 da tela de carrinho
+  Funcionalidade: Validar a adição e remoção da tela de carrinho
 
   Contexto:
     Dado que usuario acesse a pagina inicial

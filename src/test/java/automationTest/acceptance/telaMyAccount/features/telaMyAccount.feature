@@ -2,7 +2,7 @@
 
 Funcionalidade: Usuario efetua Registro e Login
 
-
+  @UsuarioSeLoga
   Cenario: Usuario se loga com sucesso
     Dado que o cliente cadastrado acessa a tela de MyAccount
     Quando preenche o formulario de login

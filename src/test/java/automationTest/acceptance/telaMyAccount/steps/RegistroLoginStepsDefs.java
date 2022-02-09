@@ -1,6 +1,6 @@
 package automationTest.acceptance.telaMyAccount.steps;
 
-import automationTest.acceptance.telaMyAccount.pagesObjects.TelaMyAccountPage;
+import automationTest.acceptance.telaMyAccount.pages.TelaMyAccountPage;
 import io.cucumber.java.After;
 import io.cucumber.java.pt.Dado;
 import io.cucumber.java.pt.E;
@@ -15,7 +15,7 @@ public class RegistroLoginStepsDefs {
     TelaMyAccountPage myAccountPage;
 
     @After
-    protected void afterEach() {
+    public void afterEach() {
         this.myAccountPage.fecharTela();
     }
 
