@@ -4,7 +4,7 @@
   Funcionalidade: Validar a adição e remoçã0 da tela de carrinho
 
   Contexto:
-    -Dado que usuario acesse a pagina inicial
+    Dado que usuario acesse a pagina inicial
 
   @AdicionaProdutoCarrinho
   Cenario:Usuário adiciona o produto ao carrinho com sucesso
